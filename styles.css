@@ -1,0 +1,10 @@
+.buttons {
+	width: 100%;
+	align-content: center;
+}
+
+button {
+	background-color: blue;
+	border: none;
+	color: white;
+}
