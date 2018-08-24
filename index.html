@@ -11,11 +11,24 @@
 		<button id='paper'>Paper</button>
 		<button id='scissors'>Scissors</button>
 	</div>
+
+	<span></span>
+
+	<div class = 'score'>
+		<span>Your score:</span><div id = 'player'></div>
+		<span>Tie counter:</span><div id = 'tie'></div>
+		<span>Computer score:</span><div id = 'computer'></div>
+	</div>
 	
 
 
 <link rel="stylesheet" href="styles.css">
 <script type="text/javascript">
+	var scoreComputer = 0;
+	var scorePlayer = 0;
+	var tieCounter = 0;
+
+
 	function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 	}
@@ -33,37 +46,51 @@
 		playerSelection = playerSelection.toUpperCase();
 		computerSelection = computerSelection.toUpperCase();
 		if (playerSelection === computerSelection) {
-			console.log('Tie!');
-			return(0);
+			resultDisplay.textContent = 'Tie!';
+			tieCounter+=1;
+			tie.textContent=tieCounter;
+			return;
 		}
 		else if (playerSelection === 'ROCK') {
 			if (computerSelection === 'PAPER') {
-				console.log('You lose! Paper beats Rock.');
-				return(-1);
+				resultDisplay.textContent ='You lose! Paper beats Rock.';
+				scoreComputer+=1;
+				computer.textContent=scoreComputer;
+				return;
 			}
 			else {
-				console.log('You win! Rock beats Scissors.');
-				return(1);			
+				resultDisplay.textContent='You win! Rock beats Scissors.';
+				scorePlayer+=1;
+				player.textContent=scorePlayer;
+				return;	
 			}
 		}
 		else if (playerSelection === 'PAPER') {
 			if (computerSelection === 'SCISSORS') {
-				console.log('You lose! Scissors beats Paper.');
-				return(-1);
+				resultDisplay.textContent ='You lose! Scissors beats Paper.';
+				scoreComputer+=1;
+				computer.textContent=scoreComputer;
+				return;
 			}
 			else {
-				console.log('You win! Paper beats Rock.');
-				return(1);
+				resultDisplay.textContent='You win! Paper beats Rock.';
+				scorePlayer+=1;
+				player.textContent=scorePlayer;
+				return;
 			}
 		}
 		else {
 			if (computerSelection === 'ROCK') {
-				console.log('You lose! Rock beats Scissors.');
-				return(-1);
+				resultDisplay.textContent ='You lose! Rock beats Scissors.';
+				scoreComputer+=1;
+				computer.textContent=scoreComputer;
+				return;
 			}
 			else {
-				console.log('You win! Scissors beats Paper.');
-				return(1);
+				resultDisplay.textContent='You win! Scissors beats Paper.';
+				scorePlayer+=1;
+				player.textContent=scorePlayer;
+				return;
 			}
 		}
 	}
@@ -78,13 +105,16 @@
   		});
 	});
 
-	const resultDisplay = document.createElement('span');
-	resultDisplay.textContent = 'Hello World!';                               
+	const resultDisplay = document.querySelector('span');
+	resultDisplay.textContent = 'Greetings! Would you like to play? Just click!';                               
+	const player = document.getElementById('player');
+	player.textContent = scorePlayer;
 
-	const buttons = document.querySelector('div.buttons');
-	const body = document.querySelector('body');
-	body.appendChild(resultDisplay);
+	const tie = document.getElementById('tie');
+	tie.textContent = tieCounter;
 
+	const computer = document.getElementById('computer');
+	computer.textContent = scoreComputer;
 
 
 	// function game() {

@@ -15,8 +15,11 @@ body {
 
 span {
 	width: 100%;
+	min-width: 24em;
 	margin: auto;
 	text-align: center;
+	background-color: black;
+	color: white;
 }
 
 button {
@@ -24,7 +27,7 @@ button {
 	border: none;
 	color: white;
 	font-weight: bold;
-	font-size: large;
+	font-size: larger;
 	text-align: center;
 	width: 12em;
 	padding: 10px;
