@@ -70,13 +70,21 @@
    
  	// DOM manipulation SECTION
 
-	const buttons = document.querySelectorAll('button');
+	const btns = document.querySelectorAll('button');
 
-	buttons.forEach((button) => {
+	btns.forEach((button) => {
   		button.addEventListener('click', (e) => {
     	playRound(button.id, computerPlay());
   		});
 	});
+
+	const resultDisplay = document.createElement('span');
+	resultDisplay.textContent = 'Hello World!';                               
+
+	const buttons = document.querySelector('div.buttons');
+	const body = document.querySelector('body');
+	body.appendChild(resultDisplay);
+
 
 
 	// function game() {
