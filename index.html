@@ -7,18 +7,26 @@
 <body>
 
 	<div class = 'buttons'>
-		<button id='rock'>Rock</button>
-		<button id='paper'>Paper</button>
-		<button id='scissors'>Scissors</button>
+		<button class ='btn' id='rock'>Rock</button>
+		<button class ='btn' id='paper'>Paper</button>
+		<button class ='btn' id='scissors'>Scissors</button>
 	</div>
 
-	<span></span>
+	<div id = 'display'></div>
 
 	<div class = 'score'>
-		<span>Your score:</span><div id = 'player'></div>
-		<span>Tie counter:</span><div id = 'tie'></div>
-		<span>Computer score:</span><div id = 'computer'></div>
+		<div class = 'scoreLine'>
+			<span>Your score</span><div id = 'player'></div>
+		</div>
+		<div class = 'scoreLine'>
+			<span>Tie counter</span><div id = 'tie'></div>
+		</div>
+		<div class = 'scoreLine'>
+			<span>Computer score</span><div id = 'computer'></div>
+		</div>
 	</div>
+
+	<button class = 'reset'>Reset</button>
 	
 
 
@@ -27,6 +35,7 @@
 	var scoreComputer = 0;
 	var scorePlayer = 0;
 	var tieCounter = 0;
+	var roundNb = 5;
 
 
 	function getRndInteger(min, max) {
@@ -40,6 +49,21 @@
 		let rps = [rock, paper, scissors];
 		let rng = getRndInteger(0,2);
 		return(rps[rng]);
+	}
+
+	function checkWin() {
+		if (scoreComputer == 5 || scorePlayer == 5) {
+			if (scoreComputer == 5) {
+				resultDisplay.textContent = 'You lose! Haha, machine beats human yet again!';
+				return;
+			}
+			else {
+				resultDisplay.textContent = 'You win... For now. I will be avenged!'
+				return;
+			}
+
+		}
+		else {return;}
 	}
 
 	function playRound (playerSelection, computerSelection) {
@@ -97,16 +121,20 @@
    
  	// DOM manipulation SECTION
 
-	const btns = document.querySelectorAll('button');
-
+ 	// plays the game when the player clicks on rock paper scissors buttons
+	const btns = document.querySelectorAll('button.btn');
 	btns.forEach((button) => {
   		button.addEventListener('click', (e) => {
+  		checkWin();
     	playRound(button.id, computerPlay());
+    	checkWin();
   		});
 	});
 
-	const resultDisplay = document.querySelector('span');
-	resultDisplay.textContent = 'Greetings! Would you like to play? Just click!';                               
+
+	// default invitation to play when nothing happened
+	const resultDisplay = document.getElementById('display');
+	resultDisplay.textContent = 'Greetings, human! Would you like to play? Just click!';                               
 	const player = document.getElementById('player');
 	player.textContent = scorePlayer;
 
@@ -116,29 +144,24 @@
 	const computer = document.getElementById('computer');
 	computer.textContent = scoreComputer;
 
-
-	// function game() {
-	// 	let counter = 0;
-	// 	counter = counter + playRound(prompt('Rock, Paper or Scissors?'),computerPlay());
-	// 	counter = counter + playRound(prompt('Rock, Paper or Scissors?'),computerPlay());
-	// 	counter = counter + playRound(prompt('Rock, Paper or Scissors?'),computerPlay());
-	// 	counter = counter + playRound(prompt('Rock, Paper or Scissors?'),computerPlay());
-	// 	counter = counter + playRound(prompt('Rock, Paper or Scissors?'),computerPlay());
-
-	// 	if(counter == 0) {
-	// 		return('It\'s a tie!');
-	// 	}
-	// 	else if (counter > 0) {
-	// 		return ('You win!');
-	// 	}
-	// 	else {
-	// 		return('You lose!');
-	// 	}
-	// }
-
-	// console.log(game());
+	// a button to reset all scores
+	const reset = document.querySelector('button.reset');
+	reset.addEventListener('click', (e) => {
+			scoreComputer = 0;
+			scorePlayer = 0;
+			tieCounter = 0;
+			tie.textContent = tieCounter;
+			computer.textContent = scoreComputer;
+			player.textContent = scorePlayer;
+			resultDisplay.textContent = 'Alright, another one?';
+		});
 
 
+	
+
+	
+
+	
 </script>
 
 </body>

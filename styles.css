@@ -15,21 +15,25 @@ body {
 
 span {
 	width: 100%;
-	min-width: 24em;
 	margin: auto;
 	text-align: center;
 	background-color: black;
 	color: white;
 }
 
+
+.scoreLine {
+	display: inline-block;
+}
+
 button {
-	background-color: #79A48B;
+	background-color: #91A3A0;
 	border: none;
 	color: white;
-	font-weight: bold;
+	font-weight: bolder;
 	font-size: larger;
 	text-align: center;
-	width: 12em;
+	width: 150px;
 	padding: 10px;
 	margin: 1em;
 	border-radius: 2px;
