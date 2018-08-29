@@ -91,10 +91,10 @@ function playRound (playerSelection, computerSelection) {
 	}
 }
 
-function game(){
+function play(){
 	let computerSelection = computerPlay();
 	if (checkWin()) {
-		button.removeEventListener('click',game);
+		button.removeEventListener('click',play);
 	}
 	else {
 		playRound(playerSelection, computerSelection);
@@ -102,19 +102,16 @@ function game(){
 	}
 }
 
-	// DOM manipulation SECTION
 
-	// plays the game when the player clicks on rock paper scissors buttons
+// plays the game when the player clicks on rock paper scissors buttons
 const btns = document.querySelectorAll('button.btn');
 btns.forEach((button) => {
 	button.addEventListener('click', () => {
     playerSelection = button.id;
   	});
-	button.addEventListener('click', game);	
+	button.addEventListener('click', play);	
 });
                             
-
-
 
 // a button to reset all scores
 const reset = document.querySelector('button.reset');
@@ -123,5 +120,5 @@ reset.addEventListener('click', (e) => {
 		scorePlayer = 0;
 		computer.textContent = scoreComputer;
 		player.textContent = scorePlayer;
-		resultDisplay.textContent = 'Alright, another one?';
+		resultDisplay.textContent = 'Alright, another one!';
 	});

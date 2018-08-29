@@ -5,25 +5,45 @@ body {
 	text-align: center;
 }
 
+#display {
+	font-family: 'monospace';
+	font-size: larger;
+	font-weight: bolder;
+	margin:0.5em;
+	padding: 10px;
+}
+
 .buttons {
 	width: 100%;
 	margin: auto;
 	text-align: center;
-	padding-top: 10%;
+	padding-top: 5%;
 	padding-bottom: 20px;
 }
+
 
 span {
 	width: 100%;
 	margin: auto;
 	text-align: center;
-	background-color: black;
-	color: white;
+	font-family: 'Arial';
+	font-size: x-large;
+	font-weight: bold;
+	color: #41A3A0;
 }
 
 
 .scoreLine {
 	display: inline-block;
+	background-color: rgba(121,164,140,0.2);
+	padding: 10px;
+	margin:1em;
+}
+
+.score {
+	font-family: 'monospace';
+	font-size:large;
+	font-weight: bold;
 }
 
 button {
@@ -34,7 +54,15 @@ button {
 	font-size: larger;
 	text-align: center;
 	width: 150px;
-	padding: 10px;
+	min-height: 2.5em;
 	margin: 1em;
 	border-radius: 2px;
+}
+
+button:hover {
+	background-color: #41A3A0;
+}
+
+.reset {
+	font-size:medium;
 }
