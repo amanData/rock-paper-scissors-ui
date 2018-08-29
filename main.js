@@ -91,10 +91,15 @@ function playRound (playerSelection, computerSelection) {
 	}
 }
 
-function game(playerSelection){
-	playRound(playerSelection, computerPlay());
+function game(){
+	let computerSelection = computerPlay();
+	if (checkWin()) {
+		button.removeEventListener('click',game);
+	}
+	else {
+		playRound(playerSelection, computerSelection);
 	checkWin();
-	console.log(checkWin());
+	}
 }
 
 	// DOM manipulation SECTION
@@ -102,13 +107,10 @@ function game(playerSelection){
 	// plays the game when the player clicks on rock paper scissors buttons
 const btns = document.querySelectorAll('button.btn');
 btns.forEach((button) => {
-	if(checkWin() == false) {
-		button.addEventListener('click', game(e.id));
-	}
-	else {
-		button.removeEventListener('click', game(e.id));
-	}
-		
+	button.addEventListener('click', () => {
+    playerSelection = button.id;
+  	});
+	button.addEventListener('click', game);	
 });
                             
 
