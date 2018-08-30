@@ -6,7 +6,7 @@ body {
 }
 
 #display {
-	font-family: 'monospace';
+	font-family: "Lucida Console", Monaco, monospace;
 	font-size: larger;
 	font-weight: bolder;
 	margin:0.5em;
@@ -41,7 +41,7 @@ span {
 }
 
 .score {
-	font-family: 'monospace';
+	font-family: "Lucida Console", Monaco, monospace;
 	font-size:large;
 	font-weight: bold;
 }
